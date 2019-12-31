@@ -1,5 +1,7 @@
 package com.fluentWait.test;
 
+import java.io.File;
+
 public class usable_Data {
     private String url = "https://jsonplaceholder.typicode.com/users";
     private String expected_contentType = "application/json";
@@ -28,15 +30,25 @@ public class usable_Data {
             "        }\n" +
             "    }\n" +
             "]";
-    public String newUrl(){
+
+    public String newUrl() {
         return url;
     }
 
-    public String getPayload(){
+    public String getPayload() {
         return payload;
     }
 
-    public String getExpected_contentType(){
+    public String getExpected_contentType() {
         return expected_contentType;
     }
+
+    public String path() {
+        String currentDirectory = System.getProperty("user.dir");
+        File f = new File("/restAssuredApiTesting/src/test/java/com/fluentWait/test/com/fluentWait/excel/test/datanew.xlsx");
+        String absolutepath = f.getAbsolutePath();
+        String actualPath = currentDirectory+absolutepath;
+        return actualPath;
+    }
 }
+

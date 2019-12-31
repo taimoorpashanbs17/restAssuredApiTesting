@@ -9,10 +9,16 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.Test;
 
+
+
 public class DataAccess {
+    private GettingPaths getFile = new GettingPaths();
+    private File excelPath = getFile.path();
+    private String currentDirectory = System.getProperty("user.dir");
+    private String ActualPath = currentDirectory+"/"+excelPath;
     @Test
     public void AccessFromExcelSheet() throws IOException {
-        File excelFile = new File("D:\\GitHub\\restAssuredApiTesting\\src\\test\\java\\com\\fluentWait\\test\\com\\fluentWait\\excel\\test\\datanew.xlsx");
+        File excelFile = new File(String.valueOf(ActualPath));
         FileInputStream fis = new FileInputStream(excelFile);
         XSSFWorkbook workbook = new XSSFWorkbook(fis);
         XSSFSheet sheet = workbook.getSheetAt(0);
