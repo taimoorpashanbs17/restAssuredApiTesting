@@ -1,30 +1,37 @@
 package com.fluentWait.test;
 
-import java.io.File;
+import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+
+import java.io.FileInputStream;
+import java.io.IOException;
 
 public class pract {
 
-    private static String OPERATING_SYSTEM = System.getProperty("os.name").toLowerCase();
+    public Object[][] getData() throws EncryptedDocumentException,
+            InvalidFormatException, IOException {
+        FileInputStream fis = new FileInputStream(
+                "D:\\GitHub\\restAssuredApiTesting\\src\\test\\java\\com\\fluentWait\\test\\com\\fluentWait\\excel\\test\\datanew.xlsx");
+        Workbook wb = WorkbookFactory.create(fis);
+        Sheet sh = wb.getSheetAt(0);
 
-    public static void main(String[] args) {
-        String path;
-        if (OPERATING_SYSTEM.contains("win")) {
-            System.out.println("You are using is Windows");
-        } else if (OPERATING_SYSTEM.contains("mac")) {
-            System.out.println("You are using Mac");
-        } else if (OPERATING_SYSTEM.contains("nix") || OPERATING_SYSTEM.contains("nux") || OPERATING_SYSTEM.contains("aix")) {
-            System.out.println("You are using Unix or Linux");
-        } else {
-            System.out.println("We can not find your OS!!");
+        int rowCount = sh.getLastRowNum();
+        int colCount = sh.getRow(0).getLastCellNum();
+        Object[][] data = new Object[rowCount][colCount];
+
+        for (int i = 0; i <= rowCount; i++) {
+            for (int j = 0; j < colCount; j++) {
+
+                data[i][j] = sh.getRow(i).getCell(j).getStringCellValue();
+                System.out.print(data[i][j] + "\t");
+
+            }
+            System.out.println();
         }
-        String currentDirectory = System.getProperty("user.dir");
-        File f = new File("/src/test/java/com/fluentWait/test/com/fluentWait/excel/test/datanew.xlsx");
-        String absolutepath = f.getAbsolutePath();
-        System.out.println(currentDirectory);
-        System.out.println(absolutepath);
-        System.out.println(currentDirectory+absolutepath);
+        return data;
     }
+
 }
-
-
-
