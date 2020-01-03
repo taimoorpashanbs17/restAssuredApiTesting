@@ -1,4 +1,4 @@
-package com.fluentWait.test;
+package com.fluentWait.test.com.fluentWait.basicTesting.test;
 
 public class usersData {
     private String email = "Nathan@yesenia.net";

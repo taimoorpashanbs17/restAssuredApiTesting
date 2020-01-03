@@ -1,11 +1,13 @@
-package com.fluentWait.test;
+package com.fluentWait.test.com.fluentWait.dataDriven.test;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
-import org.testng.annotations.Test;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fluentWait.test.com.fluentWait.basicTesting.test.usable_Data;
 import com.google.gson.JsonObject;
+import org.testng.annotations.Test;
+
 import java.util.HashMap;
 import java.util.Map;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 
 import static io.restassured.RestAssured.given;
 
@@ -13,7 +15,7 @@ public class dataDriven {
     private static usable_Data data = new usable_Data();
     private static String url = data.newUrl();
 
-    @Test(dataProvider="dataFeed", dataProviderClass=provideData.class)
+    @Test(dataProvider="dataFeed", dataProviderClass= provideData.class)
     public void basicDataDrivenTest(int id, String name, String username, String email ){
         JsonObject data = new JsonObject();
         data.addProperty("id", id);

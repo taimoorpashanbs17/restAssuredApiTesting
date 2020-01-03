@@ -1,4 +1,4 @@
-package com.fluentWait.test.xmlTesting;
+package com.fluentWait.test.com.fluentWait.xmlTesting;
 
 
 

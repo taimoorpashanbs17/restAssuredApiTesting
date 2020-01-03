@@ -1,4 +1,4 @@
-package com.fluentWait.test;
+package com.fluentWait.test.com.fluentWait.dataDriven.test;
 import org.testng.annotations.DataProvider;
 
 

@@ -1,4 +1,4 @@
-package com.fluentWait.test;
+package com.fluentWait.test.com.fluentWait.basicTesting.test;
 import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 import io.restassured.response.Response;
